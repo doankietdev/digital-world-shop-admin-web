@@ -60,7 +60,7 @@ img {
 
 svg:focus,
 svg *:focus {
-    outline: none !important;
+  outline: none !important;
 }
 
 // iOS fix
@@ -138,6 +138,32 @@ label {
   }
 }
 
+// desktop
+@media screen and (min-width: 1366px) {
+  .headroom {
+      padding: 0;
+      position: static !important;
+      transform: none !important;
+      background: transparent !important;
+      box-shadow: none !important;
+  }
+
+  .app .app_content {
+      padding: 26px;
+  }
+}
+
+// desktop large
+@media screen and (min-width: 1920px) {
+  .app {
+      display: grid;
+      grid-template-columns: minmax(0, 374px) minmax(0, 1fr);
+
+      .app_content {
+          padding: 30px 60px 15px 45px;
+      }
+  }
+}
 
 // hide input clear button
 input[type=search]::-ms-clear {
