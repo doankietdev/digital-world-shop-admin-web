@@ -1,7 +1,7 @@
 import dayjs from 'dayjs'
 import { useCallback, useEffect, useState } from 'react'
 import useMeasure from 'react-use-measure'
-import { DrawerBase, FilterItem, MessageItem, NotificationItem } from '~/components'
+import { DrawerBase, FilterItem, MessageItem } from '~/components'
 import { MESSAGE_OPTIONS } from '~/constants/options'
 import messages from '~/db/messages'
 

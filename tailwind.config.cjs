@@ -40,6 +40,9 @@ module.exports = {
       transitionDuration: {
         'DEFAULT': '300ms'
       },
+      transitionTimingFunction: {
+        'DEFAULT': 'ease-in-out'
+      },
       borderColor: {
         'DEFAULT': 'var(--border)'
       },

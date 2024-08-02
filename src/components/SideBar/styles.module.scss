@@ -1,0 +1,48 @@
+.menu {
+  @apply mt-[30px] flex flex-col gap-[20px];
+
+  &__item {
+    @apply h-[44px] rounded-md pl-[12px] pr-[18px] text-header flex items-center justify-between
+      gap-[11px] font-bold cursor-pointer border border-transparent transition font-heading;
+
+    &:hover, &:focus, &--active {
+      @apply bg-body text-header border-border;
+
+      .menu__item__icon {
+        @apply text-header;
+      }
+    }
+
+    &__icon {
+      @apply text-lg text-header transition will-change-transform;
+
+      &--caret {
+        @apply block;
+        
+        color: var(--accent) !important;
+      }
+    }
+
+    &--active {
+      .menu__item__icon--caret {
+        @apply rotate-90;
+      }
+    }
+  }
+
+  .submenu {
+    @apply mt-[14px] pl-10;
+
+    &__item {
+      @apply text-sm;
+
+      &__icon {
+        @apply text-[6px] text-gray;
+      }
+    }
+  }
+
+  &__divider {
+    @apply h-[1px] bg-border;
+  }
+}

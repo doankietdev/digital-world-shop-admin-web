@@ -2,27 +2,50 @@ import { Search, NotificationsPanel, MessagesPanel } from '~/components'
 import { useTheme } from '~/contexts/ThemeContext'
 import Headroom from 'react-headroom'
 import { useState } from 'react'
+import { useSideBar } from '~/contexts/SideBarContext'
+import { useWindowSize } from 'react-use'
 
 function AppBar() {
   const { theme, toggleTheme } = useTheme()
   const [notificationsPanelOpen, setNotificationsPanelOpen] = useState(false)
   const [messagesPanelOpen, setMessagesPanelOpen] = useState(false)
+  const [searchValue, setSearchValue] = useState('')
+  const { setOpen } = useSideBar()
+  const { width } = useWindowSize()
 
   return (
     <>
       <Headroom style={{ zIndex: 999 }}>
         <div className='flex justify-between items-center'>
-          <button className='icon text-2xl leading-none'>
-            <i className='icon-bars-solid' />
-          </button>
+          {width < 1920 && (
+            <button
+              className='icon text-2xl leading-none'
+              onClick={() => setOpen(true)}
+              aria-label='Open sidebar'
+            >
+              <i className='icon-bars-solid' />
+            </button>
+          )}
 
-          <Search
-            wrapperClassName='flex-1 max-w-[1054px] ml-5 mr-auto 4xl:ml-0'
-            // query=''
-            // setQuery={() => {}}
-          />
+          {width >= 768 && (
+            <Search
+              wrapperClassName='flex-1 max-w-[1054px] ml-5 mr-auto 4xl:ml-0'
+              query={searchValue}
+              setQuery={setSearchValue}
+            />
+          )}
 
           <div className='flex items-center gap-5 md:ml-5 xl:gap-[26px]'>
+            {
+              width < 768 &&
+              <button
+                className="text-[20px] leading-none text-gray dark:text-gray-red xl:text-2xl"
+                aria-label="Open search"
+                // onClick={() => setSearchModalOpen(true)}
+              >
+                <i className="icon-magnifying-glass-solid"/>
+              </button>
+            }
             <button
               className='text-2xl leading-none text-gray dark:text-gray-red'
               aria-label='Change theme'

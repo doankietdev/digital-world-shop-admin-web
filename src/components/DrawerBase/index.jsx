@@ -1,13 +1,15 @@
 import PropTypes from 'prop-types'
 import SwipeableDrawer from '@mui/material/SwipeableDrawer'
+import clsx from 'clsx'
 
-function DrawerBase({ children, anchor = 'left', open = false, onOpen, onClose }) {
+function DrawerBase({ children, paperClassName, anchor = 'left', variant, open = false, onOpen, onClose }) {
   return (
     <SwipeableDrawer
       anchor={anchor}
       open={open}
       onOpen={onOpen}
       onClose={onClose}
+      variant={variant}
       sx={{
         '& .MuiDrawer-paper': {
           boxShadow: 'var(--shadow)',
@@ -18,7 +20,7 @@ function DrawerBase({ children, anchor = 'left', open = false, onOpen, onClose }
         }
       }}
       classes={{
-        paper: '!w-full sm:!w-[342px] flex flex-col'
+        paper: clsx('!w-full xs:!w-[374px] flex flex-col', paperClassName)
       }}
     >
       {children}
@@ -31,7 +33,9 @@ DrawerBase.propTypes = {
   onOpen: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
   anchor: PropTypes.oneOf(['left', 'right', 'top', 'bottom']),
-  children: PropTypes.node.isRequired
+  variant: PropTypes.string,
+  children: PropTypes.node.isRequired,
+  paperClassName: PropTypes.string
 }
 
 export default DrawerBase
