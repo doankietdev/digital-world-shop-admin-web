@@ -16,6 +16,9 @@ export default defineConfig({
     port: '3001'
   },
   css: {
-    devSourcemap: true
+    devSourcemap: true,
+    modules: {
+      localsConvention: 'camelCaseOnly'
+    }
   }
 })

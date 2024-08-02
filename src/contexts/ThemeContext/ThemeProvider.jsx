@@ -49,8 +49,8 @@ function ThemeProvider({ children }) {
       })
 
     page.classList.toggle('dark', theme === 'dark')
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [theme])
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>

@@ -10,9 +10,25 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.13.0",
+    "@emotion/styled": "^11.13.0",
+    "@faker-js/faker": "^8.4.1",
+    "@mui/base": "^5.0.0-beta.40",
+    "@mui/material": "^5.16.5",
+    "@mui/styled-engine-sc": "^6.0.0-alpha.18",
+    "@react-spring/web": "^9.7.4",
+    "clsx": "^2.1.1",
+    "dayjs": "^1.11.12",
+    "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-headroom": "^3.2.1",
+    "react-helmet": "^6.1.0",
+    "react-intersection-observer": "^9.13.0",
     "react-router-dom": "^6.25.1",
+    "react-truncate": "^2.4.0",
+    "react-use": "^17.5.1",
+    "react-use-measure": "^2.1.1",
     "sass": "^1.77.8",
     "styled-components": "^6.1.12",
     "styled-theming": "^2.2.0",
@@ -29,6 +45,6 @@
     "eslint-plugin-react-refresh": "^0.4.7",
     "postcss": "^8.4.40",
     "tailwindcss": "^3.4.7",
-    "vite": "^5.3.4"
+    "vite": "^4.4.3"
   }
 }

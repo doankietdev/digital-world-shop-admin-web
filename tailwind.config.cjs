@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: 'class',
+  darkMode: 'selector',
   content: [
     './index.html',
     './src/**/*.{js,ts,jsx,tsx}'
@@ -39,6 +39,9 @@ module.exports = {
       },
       transitionDuration: {
         'DEFAULT': '300ms'
+      },
+      transitionTimingFunction: {
+        'DEFAULT': 'ease-in-out'
       },
       borderColor: {
         'DEFAULT': 'var(--border)'

@@ -1,28 +1,50 @@
 import { Suspense } from 'react'
-import { Routes } from 'react-router-dom'
+import { Routes, useLocation } from 'react-router-dom'
+import { ThemeProvider } from 'styled-components'
 
 // styles
-import '~/assets/styles/index.scss'
+import '~/styles/index.scss'
+import ThemeStyles from '~/styles/theme'
 
 // fonts
-import '~/assets/fonts/icomoon/icomoon.woff'
+import '~/fonts/icomoon/icomoon.woff'
 
 // components
-import Loader from './Loader'
+import {
+  Loader,
+  AppBar
+} from './components'
+import { useTheme } from './contexts/ThemeContext'
+import { useWindowSize } from 'react-use'
+import SideBar from './components/SideBar'
+import { SideBarProvider } from './contexts/SideBarContext'
 
 function App() {
+  const { theme } = useTheme()
+  const { width } = useWindowSize()
+  const path = useLocation().pathname
+
+  const withSidebar = path !== '/login' && path !== '/404'
 
   return (
-    <div className='app'>
-      <div className='app_content'>
-        <div className='main'>
-          <Suspense fallback={<Loader />}>
-            <Routes>
-            </Routes>
-          </Suspense>
+    <SideBarProvider>
+      <ThemeProvider theme={{ theme }} >
+        <ThemeStyles />
+        {width < 1280 && withSidebar && <AppBar />}
+        <div className='app'>
+          {withSidebar && <SideBar />}
+          <div className='app_content'>
+            {width >= 1280 && withSidebar && <AppBar />}
+            <div className='main'>
+              <Suspense fallback={<Loader />}>
+                <Routes>
+                </Routes>
+              </Suspense>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      </ThemeProvider>
+    </SideBarProvider>
   )
 }
 
