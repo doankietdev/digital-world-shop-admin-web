@@ -1,6 +1,6 @@
 import Collapse from '@mui/material/Collapse'
 import clsx from 'clsx'
-import { useState } from 'react'
+import { useState, Fragment } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import { useWindowSize } from 'react-use'
 import { DrawerBase, Logo } from '~/components'
@@ -32,7 +32,7 @@ function SideBar() {
       <Logo />
       <nav className={styles.menu}>
         {ROUTES.map((ROUTE, index) => (
-          <>
+          <Fragment key={index}>
             {
               ROUTE.links && (
                 <>
@@ -100,7 +100,7 @@ function SideBar() {
                 </>
               )
             }
-          </>
+          </Fragment>
         ))}
       </nav>
     </DrawerBase>
