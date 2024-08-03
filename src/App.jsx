@@ -1,5 +1,5 @@
-import { Suspense } from 'react'
-import { Routes, useLocation } from 'react-router-dom'
+import { lazy, Suspense } from 'react'
+import { Route, Routes, useLocation } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 
 // styles
@@ -18,6 +18,9 @@ import { useTheme } from './contexts/ThemeContext'
 import { useWindowSize } from 'react-use'
 import SideBar from './components/SideBar'
 import { SideBarProvider } from './contexts/SideBarContext'
+import clsx from 'clsx'
+
+const Login = lazy(() => import('~/pages/Login'))
 
 function App() {
   const { theme } = useTheme()
@@ -31,13 +34,14 @@ function App() {
       <ThemeProvider theme={{ theme }} >
         <ThemeStyles />
         {width < 1280 && withSidebar && <AppBar />}
-        <div className='app'>
+        <div className={clsx('app', { 'fluid': !withSidebar })}>
           {withSidebar && <SideBar />}
           <div className='app_content'>
             {width >= 1280 && withSidebar && <AppBar />}
             <div className='main'>
               <Suspense fallback={<Loader />}>
                 <Routes>
+                  <Route path='/login' element={<Login />} />
                 </Routes>
               </Suspense>
             </div>
